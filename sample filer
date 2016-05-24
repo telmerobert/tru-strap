@@ -1,0 +1,25 @@
+Hiera.yaml:
+---
+:backends:
+  - yaml
+:yaml:
+  :datadir: "/etc/puppet/environments/%{init_env}/hieradata"
+:hierarchy:
+  - "%{::init_env}/%{::init_role}"
+  - "%{::init_role}"
+  - "%{::init_env}/common"
+  - "%{::init_env}/%{::hostname}"
+  - "%{::init_env}"
+  - common
+----
+---
+roles
+-------
+classes:
+    - role::db
+    
+    site.pp
+    ------
+    node default {
+  hiera_include('classes')
+}
