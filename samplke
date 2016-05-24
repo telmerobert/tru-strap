@@ -1,0 +1,1 @@
+./init.sh --role db --environment test --repouser telmerobert --reponame docrepository
